@@ -9,16 +9,16 @@ export async function loadAllTodos(
 ) {
   const $where = {};
   const $options = {
-    limit: 10,
+    limit: first || last,
     sort: { createdAt: 'desc' },
   };
 
   if (before) {
-    $where.createdAt = { $lt: new Date(decode(before)) };
+    $where.createdAt = { $lte: new Date(decode(before)) };
   }
 
   if (after) {
-    $where.createdAt = { $gt: new Date(decode(after)) };
+    $where.createdAt = { $gte: new Date(decode(after)) };
   }
 
   const todos = await TodoModel.find($where, null, $options);

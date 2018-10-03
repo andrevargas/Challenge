@@ -1,0 +1,25 @@
+version: '3.2'
+services:
+  apollo:
+    build: .
+    container_name: apollo_server
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    environment:
+      NODE_ENV: development
+      MONGODB_URL: mongodb://mongo/database # TODO remove it from here
+      JWT_SECRET: secret # TODO remove it from here
+    ports:
+      - "4000:4000"
+    volumes:
+      - type: bind
+        source: .
+        target: /usr/app
+    entrypoint: yarn start
+  mongo:
+    image: mongo
+    container_name: mongo_database
+    ports:
+      - "27018:27017" # expose port for connecting via host client

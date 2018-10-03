@@ -2,8 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { UserModel } from './modules/user/UserModel';
 
-// #TODO: you know what to do
-const JWT_SECRET = 'potato';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function authenticate(plainPassword, encryptedPassword) {
   return bcrypt.compare(plainPassword, encryptedPassword);

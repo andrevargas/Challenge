@@ -13,7 +13,7 @@ export const SchemaDefinition = `
   type Query {
     me: User
     todo(id: ID!): Todo
-    todos(offset: Int, limit: Int): [Todo]
+    todos(first: Int, after: String, last: Int, before: String): TodoConnection
   }
 
   type Mutation {
@@ -24,11 +24,22 @@ export const SchemaDefinition = `
     removeTodo(input: RemoveTodoInput): Todo!
     completeTodo(input: CompleteTodoInput): Todo!
   }
+
+  type PageInfo {
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+  }
 `;
 
 export const typeDefs = [UserType.typeDefs, TodoType.typeDefs];
 
 export const schema = makeExecutableSchema({
   typeDefs: [SchemaDefinition, ...typeDefs],
-  resolvers,
+  resolvers: {
+    ...resolvers,
+    PageInfo: {
+      hasNextPage: connection => connection.hasNextPage(),
+      hasPreviousPage: connection => connection.hasPreviousPage(),
+    },
+  },
 });

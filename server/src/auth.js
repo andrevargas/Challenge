@@ -9,10 +9,10 @@ export async function authenticate(plainPassword, encryptedPassword) {
   return bcrypt.compare(plainPassword, encryptedPassword);
 }
 
-export async function getUser(authorization) {
-  if (!authorization) return null;
+export async function getUser(token) {
+  if (!token) return null;
   try {
-    const tokenInfo = jwt.verify(authorization.substring(7), JWT_SECRET);
+    const tokenInfo = jwt.verify(token, JWT_SECRET);
     const user = await UserModel.findById(tokenInfo.id);
     return user;
   } catch (error) {

@@ -8,11 +8,11 @@ export const TodoSchema = new mongoose.Schema(
     },
     completed: {
       type: String,
-      required: true,
+      required: false,
     },
     date: {
       type: String,
-      required: true,
+      required: false,
     },
     user: {
       type: mongoose.SchemaTypes.ObjectId,

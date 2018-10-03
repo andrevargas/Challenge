@@ -9,12 +9,12 @@ export const typeDefs = `
     token: String
   }
 
-  type SignInInput {
+  input SignInInput {
     email: String!
     password: String!
   }
 
-  type SignUpInput {
+  input SignUpInput {
     name: String!
     email: String!
     password: String!

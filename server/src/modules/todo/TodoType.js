@@ -4,22 +4,32 @@ import * as TodoMutation from './TodoMutation';
 export const typeDefs = `
   type Todo {
     id: ID!
-    description: String!
-    completed: Boolean!
+    description: String
+    completed: Boolean
     date: String
-    user: User!
+    user: User
   }
 
-  type AddTodoInput {
+  type TodoConnection {
+    edges: [TodoEdge]
+    pageInfo: PageInfo!
+  }
+
+  type TodoEdge {
+    cursor: String!
+    node: Todo!
+  }
+
+  input AddTodoInput {
     description: String!
     date: String
   }
 
-  type RemoveTodoInput {
+  input RemoveTodoInput {
     id: ID!
   }
 
-  type CompleteTodoInput {
+  input CompleteTodoInput {
     id: ID!
     completed: Boolean!
   }

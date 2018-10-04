@@ -9,10 +9,12 @@ export const TodoSchema = new mongoose.Schema(
     completed: {
       type: String,
       required: false,
+      default: false,
     },
     date: {
-      type: String,
+      type: Date,
       required: false,
+      default: new Date(),
     },
     user: {
       type: mongoose.SchemaTypes.ObjectId,

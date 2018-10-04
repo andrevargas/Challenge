@@ -10,15 +10,15 @@ export async function loadAllTodos(
   const $where = {};
   const $options = {
     limit: first || last,
-    sort: { createdAt: 'desc' },
+    sort: { createdAt: -1 },
   };
 
   if (before) {
-    $where.createdAt = { $lte: new Date(decode(before)) };
+    $where.createdAt = { $gte: new Date(decode(before)) };
   }
 
   if (after) {
-    $where.createdAt = { $gte: new Date(decode(after)) };
+    $where.createdAt = { $lte: new Date(decode(after)) };
   }
 
   const todos = await TodoModel.find($where, null, $options);

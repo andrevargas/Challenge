@@ -16,5 +16,3 @@ export async function addTodo(
 }
 
 export function removeTodo() {}
-
-export function completeTodo() {}

@@ -4,10 +4,10 @@ import * as TodoMutation from './TodoMutation';
 export const typeDefs = `
   type Todo {
     id: ID!
-    description: String
-    completed: Boolean
-    date: String
-    user: User
+    description: String!
+    completed: Boolean!
+    date: String!
+    user: User!
   }
 
   type TodoConnection {
@@ -28,11 +28,6 @@ export const typeDefs = `
   input RemoveTodoInput {
     id: ID!
   }
-
-  input CompleteTodoInput {
-    id: ID!
-    completed: Boolean!
-  }
 `;
 
 export const queryResolvers = {
@@ -43,5 +38,4 @@ export const queryResolvers = {
 export const mutationResolvers = {
   addTodo: TodoMutation.addTodo,
   removeTodo: TodoMutation.removeTodo,
-  completeTodo: TodoMutation.completeTodo,
 };

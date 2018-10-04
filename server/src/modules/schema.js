@@ -22,7 +22,6 @@ export const SchemaDefinition = `
 
     addTodo(input: AddTodoInput): Todo!
     removeTodo(input: RemoveTodoInput): Todo!
-    completeTodo(input: CompleteTodoInput): Todo!
   }
 
   type PageInfo {

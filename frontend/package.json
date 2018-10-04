@@ -5,19 +5,37 @@
   "license": "MIT",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.5.0",
     "@babel/runtime": "^7.0.0",
-    "react-native": "0.57.1"
+    "@types/react-native-linear-gradient": "^2.4.0",
+    "react": "16.5.2",
+    "react-native": "0.57.1",
+    "react-native-linear-gradient": "^2.4.2",
+    "styled-components": "^3.4.9"
   },
   "devDependencies": {
-    "babel-jest": "23.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/react": "^16.4.14",
+    "@types/react-native": "^0.57.1",
+    "@types/styled-components": "^3.0.1",
+    "babel-jest": "23.6.0",
     "jest": "23.6.0",
-    "metro-react-native-babel-preset": "0.46.0",
-    "react-test-renderer": "16.5.0"
+    "metro-react-native-babel-preset": "0.47.1",
+    "prettier": "^1.14.3",
+    "react-test-renderer": "16.5.2",
+    "schedule": "0.4.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-plugin-prettier": "^2.0.0",
+    "tslint-react": "^3.6.0"
   },
   "jest": {
     "preset": "react-native"

@@ -1,12 +1,16 @@
 import * as TodoLoader from './TodoLoader';
 import * as TodoMutation from './TodoMutation';
 
+import { withAuth } from '../resolvers';
+
 export const typeDefs = `
   type Todo {
     id: ID!
-    description: String!
     completed: Boolean!
-    date: String!
+    description: String!
+    date: DateTime!
+    createdAt: DateTime!
+    updatedAt: DateTime!
     user: User!
   }
 
@@ -24,18 +28,13 @@ export const typeDefs = `
     description: String!
     date: String
   }
-
-  input RemoveTodoInput {
-    id: ID!
-  }
 `;
 
 export const queryResolvers = {
-  todo: TodoLoader.loadTodo,
-  todos: TodoLoader.loadAllTodos,
+  todo: withAuth(TodoLoader.loadTodo),
+  todos: withAuth(TodoLoader.loadAllTodos),
 };
 
 export const mutationResolvers = {
-  addTodo: TodoMutation.addTodo,
-  removeTodo: TodoMutation.removeTodo,
+  addTodo: withAuth(TodoMutation.addTodo),
 };

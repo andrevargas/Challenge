@@ -14,5 +14,3 @@ export async function addTodo(
 
   return prepare(todo);
 }
-
-export function removeTodo() {}

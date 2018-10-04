@@ -1,6 +1,8 @@
 import * as UserLoader from './UserLoader';
 import * as UserMutation from './UserMutation';
 
+import { withAuth } from '../resolvers';
+
 export const typeDefs = `
   type User {
     id: ID!
@@ -22,7 +24,7 @@ export const typeDefs = `
 `;
 
 export const queryResolvers = {
-  me: UserLoader.loadCurrentUser,
+  me: withAuth(UserLoader.loadCurrentUser),
 };
 
 export const mutationResolvers = {

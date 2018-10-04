@@ -1,3 +1,4 @@
+import { AuthenticationError, ApolloError } from 'apollo-server';
 import { UserModel } from './UserModel';
 import { encryptPassword, generateToken, authenticate } from '../../auth';
 import { prepare } from '../resolvers';
@@ -7,7 +8,7 @@ export async function signIn(root, { input: { email, password } }) {
   const authSuccess = await authenticate(password, user.password);
 
   if (!authSuccess) {
-    throw new Error('E-mail or password invalid.');
+    throw new AuthenticationError('E-mail or password invalid.');
   }
 
   user.token = generateToken(user);
@@ -18,7 +19,7 @@ export async function signUp(root, { input: { name, email, password } }) {
   const existingUser = await UserModel.findOne({ email });
 
   if (existingUser) {
-    throw new Error('This e-mail is already used!');
+    throw new ApolloError('This e-mail is already used!', 'EMAIL_ALREADY_USED');
   }
 
   const user = await UserModel.create({

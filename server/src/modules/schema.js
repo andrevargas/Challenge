@@ -19,10 +19,10 @@ export const SchemaDefinition = `
   type Mutation {
     signIn(input: SignInInput!): User!
     signUp(input: SignUpInput!): User!
-
     addTodo(input: AddTodoInput): Todo!
-    removeTodo(input: RemoveTodoInput): Todo!
   }
+
+  scalar DateTime
 
   type PageInfo {
     hasNextPage: Boolean!
@@ -34,11 +34,5 @@ export const typeDefs = [UserType.typeDefs, TodoType.typeDefs];
 
 export const schema = makeExecutableSchema({
   typeDefs: [SchemaDefinition, ...typeDefs],
-  resolvers: {
-    ...resolvers,
-    PageInfo: {
-      hasNextPage: connection => connection.hasNextPage(),
-      hasPreviousPage: connection => connection.hasPreviousPage(),
-    },
-  },
+  resolvers,
 });

@@ -1,4 +1,5 @@
 version: '3.2'
+
 services:
   apollo:
     build: .
@@ -19,7 +20,7 @@ services:
         target: /usr/app
     entrypoint: yarn start
   mongo:
-    image: mongo
+    image: mongo:4
     container_name: mongo_database
     ports:
       - "27018:27017" # expose port for connecting via host client

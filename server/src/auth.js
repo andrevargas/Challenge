@@ -8,11 +8,15 @@ export async function authenticate(plainPassword, encryptedPassword) {
   return bcrypt.compare(plainPassword, encryptedPassword);
 }
 
-export async function getUser(token) {
-  if (!token) return null;
+export async function getUser(authorization) {
+  if (!authorization) return null;
   try {
-    const tokenInfo = jwt.verify(token, JWT_SECRET);
-    const user = await UserModel.findById(tokenInfo.id);
+    const token = authorization.substring(7);
+    const decodedToken = jwt.verify(token, JWT_SECRET);
+
+    const user = await UserModel.findById(decodedToken.id);
+    user.token = token;
+
     return user;
   } catch (error) {
     return null;

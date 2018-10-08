@@ -4,6 +4,7 @@
     "paths": {
       "@app/*": ["src/*"],
       "@components/*": ["src/components/*"],
+      "@screens/*": ["src/screens/*"],
       "@assets/*": ["src/assets/*"],
     },
     "target": "esnext",

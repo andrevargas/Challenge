@@ -65,3 +65,9 @@ export const Input = styledInput`
     props.focused ? props.borderFocusedColor : props.borderColor};
   margin-bottom: 20px;
 `;
+
+Input.defaultProps = {
+  borderColor: 'white',
+  borderFocusedColor: 'white',
+  color: 'white',
+};

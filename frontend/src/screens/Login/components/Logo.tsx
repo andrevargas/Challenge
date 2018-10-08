@@ -17,7 +17,6 @@ const Wrapper = styled.View`
   justify-content: flex-start;
   margin-top: 5%;
   height: 200px;
-  margin-bottom: 5%;
 `;
 
 const Emoji = styled.Image`

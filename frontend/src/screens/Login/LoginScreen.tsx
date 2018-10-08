@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import styled from 'styled-components/native';
+
 import { TextInput } from '@components/TextInput';
-import { FullWidthButton } from '@components/FullWidthButton';
+import { LoginButton } from './components/LoginButton';
 import { Logo } from './components/Logo';
 import { RegisterLink } from './components/RegisterLink';
+
+import styled from 'styled-components/native';
 
 const Background: React.SFC<{}> = ({ children }) => (
   <LinearGradient
@@ -29,8 +31,8 @@ export class LoginScreen extends React.Component {
     return (
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <Background>
-          <Logo />
           <FormWrapper>
+            <Logo />
             <TextInput
               placeholder="E-mail"
               textContentType="emailAddress"
@@ -43,9 +45,9 @@ export class LoginScreen extends React.Component {
             />
             <RegisterLink />
           </FormWrapper>
-          <FullWidthButton background="white" color="#a759be">
+          <LoginButton background="white" color="#a759be">
             LET ME IN! 👉
-          </FullWidthButton>
+          </LoginButton>
         </Background>
       </ScrollView>
     );

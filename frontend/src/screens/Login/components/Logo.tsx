@@ -13,11 +13,11 @@ export const Logo: React.SFC<{}> = () => (
 );
 
 const Wrapper = styled.View`
-  flex: 1;
   align-items: center;
   justify-content: flex-start;
   margin-top: 5%;
-  height: 100px;
+  height: 200px;
+  margin-bottom: 5%;
 `;
 
 const Emoji = styled.Image`

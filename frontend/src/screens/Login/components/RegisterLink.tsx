@@ -16,6 +16,7 @@ export const RegisterLink: React.SFC<{}> = () => (
 
 const Touchable = styled.TouchableOpacity`
   width: 100%;
+  margin-bottom: 5%;
 `;
 
 const LinkText = styled.Text`

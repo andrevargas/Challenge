@@ -1,4 +1,4 @@
-class HslColor {
+export class HslColor {
   constructor(
     private hue: number,
     private saturation: number,
@@ -30,17 +30,4 @@ class HslColor {
       return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
     }
   }
-}
-
-export function hsl(hue: number, saturation: number, lightness: number) {
-  return new HslColor(hue, saturation, lightness);
-}
-
-export function hsla(
-  hue: number,
-  saturation: number,
-  lightness: number,
-  opacity: number
-) {
-  return new HslColor(hue, saturation, lightness, opacity);
 }

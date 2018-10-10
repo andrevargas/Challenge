@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import styled from 'styled-components/native';
+import { white } from '@app/theme/colors';
 
 interface IProps {
   color?: string;
@@ -19,6 +21,6 @@ const Touchable = styled.TouchableOpacity`
 `;
 
 const LinkText = styled.Text`
-  color: white;
+  color: ${white.value};
   font-size: 20px;
 `;

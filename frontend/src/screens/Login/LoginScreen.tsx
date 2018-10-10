@@ -2,15 +2,14 @@ import * as React from 'react';
 import { ScrollView, Text } from 'react-native';
 import { NavigationInjectedProps } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
-import styled from 'styled-components/native';
 
 import { TextInput } from '@components/TextInput';
 import { Link } from '@components/Link';
 import { LoginButton } from './components/LoginButton';
 import { Logo } from './components/Logo';
-import { hsl } from '@app/styles';
 
-const white = hsl(0, 100, 100);
+import styled from 'styled-components/native';
+import { white, rose, violet } from '@app/theme/colors';
 
 export class LoginScreen extends React.Component<NavigationInjectedProps> {
   public render() {
@@ -20,7 +19,7 @@ export class LoginScreen extends React.Component<NavigationInjectedProps> {
           style={{ flex: 1 }}
           end={{ x: 2, y: 1 }}
           start={{ x: 0, y: 1 }}
-          colors={['#c68690', '#801ffa']}>
+          colors={[rose.value, violet.value]}>
           <FormWrapper>
             <Logo />
             <TextInput

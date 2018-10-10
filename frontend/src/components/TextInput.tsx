@@ -1,24 +1,20 @@
 import * as React from 'react';
-import { TextInputProps } from 'react-native';
-import styled, { StyledFunction } from 'styled-components/native';
-import { hsla } from '@app/styles';
+import { TextInput as TextInputNative, TextInputProps } from 'react-native';
+import styled from 'styled-components/native';
+import { white } from '@app/theme/colors';
 
 interface IState {
   focused: boolean;
 }
 
-interface IProps {
+interface IProps extends TextInputProps {
   color?: string;
   borderColor?: string;
   borderFocusedColor?: string;
+  focused?: boolean;
 }
 
-const white = hsla(0, 100, 100, 0.5);
-
-export class TextInput extends React.Component<
-  IProps & TextInputProps,
-  IState
-> {
+export class TextInput extends React.Component<IProps, IState> {
   public state: IState = { focused: false };
 
   public render() {
@@ -44,17 +40,7 @@ export class TextInput extends React.Component<
   };
 }
 
-interface IInputExtraProps {
-  focused?: boolean;
-  color?: string;
-  borderColor?: string;
-  borderFocusedColor?: string;
-}
-
-const styledInput: StyledFunction<IInputExtraProps & TextInputProps> =
-  styled.TextInput;
-
-export const Input = styledInput`
+export const Input = styled<IProps>(TextInputNative)`
   width: 100%;
   color: ${props => props.color};
   font-size: 22px;
@@ -67,7 +53,7 @@ export const Input = styledInput`
 `;
 
 Input.defaultProps = {
-  borderColor: 'white',
-  borderFocusedColor: 'white',
-  color: 'white',
+  borderColor: white.value,
+  borderFocusedColor: white.value,
+  color: white.value,
 };

@@ -1,53 +1,37 @@
 import * as React from 'react';
-import { Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { NavigationInjectedProps } from 'react-navigation';
-import styled from 'styled-components/native';
 
-import { TextInput } from '@components/TextInput';
+import { Title } from '@components/Title';
 import { Link } from '@components/Link';
+import { RegisterInput } from './components/RegisterInput';
 import { RegisterButton } from './components/RegisterButton';
-import { hsla } from '@app/styles';
 
-const black = hsla(0, 0, 50, 0.3);
+import styled from 'styled-components/native';
+import { amethyst, darkGrey, white } from '@app/theme/colors';
 
 export class RegisterScreen extends React.Component<NavigationInjectedProps> {
   public render() {
     return (
-      <Background contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <Wrapper>
           <Title>Create your account</Title>
           <Info>
             You're almost there! We just need your data, but relax, we promise
             we won't sell it.
           </Info>
-          <TextInput
-            color="#333333"
-            selectionColor="#a759be"
-            borderColor={black.value}
-            borderFocusedColor="#a759be"
-            placeholderTextColor={black.alpha(0.5).value}
-            placeholder="Name"
-            textContentType="name"
-          />
-          <TextInput
-            color="#333333"
-            borderColor={black.value}
-            borderFocusedColor="#a759be"
-            placeholderTextColor={black.alpha(0.5).value}
+          <RegisterInput placeholder="Name" textContentType="name" />
+          <RegisterInput
             placeholder="E-mail"
             keyboardType="email-address"
             textContentType="emailAddress"
           />
-          <TextInput
-            color="#333333"
-            borderColor={black.value}
-            borderFocusedColor="#a759be"
-            placeholderTextColor={black.alpha(0.5).value}
+          <RegisterInput
             placeholder="Password"
             textContentType="password"
             secureTextEntry={true}
           />
-          <Link color="#a759be" onPress={this.toLogin}>
+          <Link color={amethyst.value} onPress={this.toLogin}>
             Already a professional procrastinator?{' '}
             <Text style={{ textDecorationLine: 'underline' }}>
               Please sign in!
@@ -55,8 +39,10 @@ export class RegisterScreen extends React.Component<NavigationInjectedProps> {
             <Text>👈</Text>
           </Link>
         </Wrapper>
-        <RegisterButton color="white">CREATE MY ACCOUNT ⚡</RegisterButton>
-      </Background>
+        <RegisterButton color={white.value}>
+          CREATE MY ACCOUNT ⚡
+        </RegisterButton>
+      </ScrollView>
     );
   }
 
@@ -65,25 +51,14 @@ export class RegisterScreen extends React.Component<NavigationInjectedProps> {
   };
 }
 
-const Title = styled.Text`
-  color: #a759be;
-  font-size: 32px;
-  font-family: 'sans-serif-medium';
-  margin-bottom: 5%;
-`;
-
 const Info = styled.Text`
-  color: #333333;
+  color: ${darkGrey.value};
   font-size: 18px;
   margin-bottom: 5%;
-`;
-
-const Background = styled.ScrollView`
-  flex: 1;
-  background: white;
 `;
 
 const Wrapper = styled.View`
   flex: 1;
   padding: 20px;
+  background-color: ${white.value};
 `;

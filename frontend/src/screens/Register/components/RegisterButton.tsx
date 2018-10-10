@@ -1,6 +1,8 @@
 import * as React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
+
 import styled from 'styled-components/native';
+import { rose, violet } from '@app/theme/colors';
 
 interface IProps {
   color?: string;
@@ -8,18 +10,13 @@ interface IProps {
   onPress?(event: any): void;
 }
 
-export const RegisterButton: React.SFC<IProps> = ({
-  onPress,
-  color,
-  children,
-}) => (
-  <Touchable onPress={onPress}>
+export const RegisterButton: React.SFC<IProps> = props => (
+  <Touchable onPress={props.onPress}>
     <Gradient
-      style={{ flex: 1 }}
       end={{ x: 2, y: 1 }}
       start={{ x: 0, y: 1 }}
-      colors={['#c68690', '#801ffa']}>
-      <Title style={{ color }}>{children}</Title>
+      colors={[rose.value, violet.value]}>
+      <Title style={{ color: props.color }}>{props.children}</Title>
     </Gradient>
   </Touchable>
 );

@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import styled from 'styled-components/native';
 import { darkGrey, black } from '@app/theme/colors';
-import { View } from 'react-native';
 
 export const TodoItem: React.SFC = props => (
   <Touchable>

@@ -5,7 +5,7 @@ interface IProps {
   color?: string;
   background?: string;
   children: string;
-  onPress?(event: any): void;
+  onPress?(): void;
 }
 
 export const LoginButton: React.SFC<IProps> = ({

@@ -3,25 +3,29 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import styled from 'styled-components/native';
 import { white, rose, violet } from '@app/theme/colors';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacityProps } from 'react-native';
 
-export const BottomBar = () => (
-  <TouchableOpacity>
+export const AddTodoButton: React.SFC<TouchableOpacityProps> = props => (
+  <Touchable onPress={props.onPress}>
     <Gradient
       end={{ x: 2, y: 1 }}
       start={{ x: 0, y: 1 }}
       colors={[rose.value, violet.value]}>
       <Title>➕ &nbsp;ADD NEW TODO</Title>
     </Gradient>
-  </TouchableOpacity>
+  </Touchable>
 );
+
+const Touchable = styled.TouchableOpacity`
+  align-self: center;
+  position: absolute;
+  bottom: 20px;
+`;
 
 const Gradient = styled(LinearGradient)`
   padding: 20px 30px;
   border-radius: 50px;
-  align-self: center;
-  position: relative;
-  bottom: 20px;
+  elevation: 5;
 `;
 
 const Title = styled.Text`

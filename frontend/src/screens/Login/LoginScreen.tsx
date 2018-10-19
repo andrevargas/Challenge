@@ -45,15 +45,20 @@ export class LoginScreen extends React.Component<NavigationInjectedProps> {
               <Text>👉</Text>
             </Link>
           </FormWrapper>
-          <LoginButton background="white" color="#a759be">
+          <LoginButton background="white" color="#a759be" onPress={this.toList}>
             LET ME IN! 👉
           </LoginButton>
         </LinearGradient>
       </ScrollView>
     );
   }
+
   private toRegister = () => {
     this.props.navigation.navigate('Register');
+  };
+
+  private toList = () => {
+    this.props.navigation.navigate('TodoList');
   };
 }
 

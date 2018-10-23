@@ -18,7 +18,7 @@ export class TodoListScreen extends React.Component<NavigationInjectedProps> {
   public render() {
     return (
       <Container>
-        <ScrollContainer contentContainerStyle={{ flexGrow: 1 }}>
+        <ScrollContainer>
           <Title style={{ padding: 20, paddingBottom: 0 }}>
             Things you won't do
           </Title>

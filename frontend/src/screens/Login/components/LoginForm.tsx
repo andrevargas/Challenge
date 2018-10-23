@@ -3,6 +3,7 @@ import { View } from 'react-native';
 
 import { TextInput } from '@components/TextInput';
 import { Button } from '@components/Button';
+import { Logo } from './Logo';
 
 import styled from 'styled-components/native';
 import { white, amethyst, yellow } from '@app/theme/colors';
@@ -13,9 +14,7 @@ interface IState {
 }
 
 interface IProps {
-  renderAfter: React.ReactElement<any>;
-  renderBefore: React.ReactElement<any>;
-  onSubmit: (state: IState) => any;
+  onSubmit: (variables: IState) => any;
 }
 
 export class LoginForm extends React.Component<IProps, IState> {
@@ -28,7 +27,7 @@ export class LoginForm extends React.Component<IProps, IState> {
     return (
       <View>
         <FormWrapper>
-          {this.props.renderBefore}
+          <Logo />
           <TextInput
             value={this.state.email}
             onChangeText={this.handleChange('email')}
@@ -51,7 +50,7 @@ export class LoginForm extends React.Component<IProps, IState> {
             borderColor={white.alpha(0.5).value}
             borderFocusedColor={yellow.value}
           />
-          {this.props.renderAfter}
+          {this.props.children}
         </FormWrapper>
         <Button
           onPress={this.handleSubmit}

@@ -24,21 +24,15 @@ export class LoginScreen extends React.Component<NavigationInjectedProps> {
         <GradientBackground to={violet.value} from={rose.value}>
           <SignInMutation>
             {commitMutation => (
-              <LoginForm
-                onSubmit={this.signIn(commitMutation)}
-                renderBefore={<Logo />}
-                renderAfter={
-                  <Link
-                    color={white.alpha(0.8).value}
-                    onPress={this.toRegister}>
-                    Ready to procrastinate?{' '}
-                    <Text style={{ textDecorationLine: 'underline' }}>
-                      Create an account!
-                    </Text>{' '}
-                    <Text>👉</Text>
-                  </Link>
-                }
-              />
+              <LoginForm onSubmit={this.signIn(commitMutation)}>
+                <Link color={white.alpha(0.8).value} onPress={this.toRegister}>
+                  Ready to procrastinate?{' '}
+                  <Text style={{ textDecorationLine: 'underline' }}>
+                    Create an account!
+                  </Text>{' '}
+                  <Text>👉</Text>
+                </Link>
+              </LoginForm>
             )}
           </SignInMutation>
         </GradientBackground>

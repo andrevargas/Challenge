@@ -8,6 +8,7 @@
   "rules": {
     "prettier": { "severity": "warning" },
     "ordered-imports": false,
-    "no-console": [false, "error"]
+    "no-console": [false, "error"],
+    "object-literal-sort-keys": false
   }
 }

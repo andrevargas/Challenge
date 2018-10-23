@@ -11,6 +11,10 @@ import styled from 'styled-components/native';
 import { amethyst, darkGrey, white } from '@app/theme/colors';
 
 export class RegisterScreen extends React.Component<NavigationInjectedProps> {
+  public static navigationOptions = {
+    header: null,
+  };
+
   public render() {
     return (
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>

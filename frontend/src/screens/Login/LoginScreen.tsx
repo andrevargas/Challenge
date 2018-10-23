@@ -12,6 +12,10 @@ import styled from 'styled-components/native';
 import { white, rose, violet } from '@app/theme/colors';
 
 export class LoginScreen extends React.Component<NavigationInjectedProps> {
+  public static navigationOptions = {
+    header: null,
+  };
+
   public render() {
     return (
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>

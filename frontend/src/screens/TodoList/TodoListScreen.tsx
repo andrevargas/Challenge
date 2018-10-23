@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ScrollView } from 'react-native';
 import { NavigationInjectedProps } from 'react-navigation';
 
+import { ScrollContainer } from '@app/components/ScrollContainer';
 import { Title } from '@app/components/Title';
 import { TodoItem } from './components/TodoItem';
 import { AddTodoButton } from './components/AddTodoButton';
@@ -17,7 +18,7 @@ export class TodoListScreen extends React.Component<NavigationInjectedProps> {
   public render() {
     return (
       <Container>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <ScrollContainer contentContainerStyle={{ flexGrow: 1 }}>
           <Title style={{ padding: 20, paddingBottom: 0 }}>
             Things you won't do
           </Title>
@@ -26,7 +27,7 @@ export class TodoListScreen extends React.Component<NavigationInjectedProps> {
           <TodoItem>Hey, how is it going?</TodoItem>
           <TodoItem>Lorem ipsum dolor sit amet lorem ipsis iteris</TodoItem>
           <TodoItem>Hey, how is it going?</TodoItem>
-        </ScrollView>
+        </ScrollContainer>
         <AddTodoButton onPress={this.toAddTodo} />
       </Container>
     );

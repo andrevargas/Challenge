@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Text } from 'react-native';
-import styled from 'styled-components/native';
 
-export const Logo: React.SFC<{}> = () => (
+import styled from 'styled-components/native';
+import { yellow } from '@app/theme/colors';
+
+export const Logo: React.SFC = () => (
   <Wrapper>
     <Title>
       To
-      <Text style={{ color: 'yellow' }}>Don't</Text>
+      <Text style={{ color: yellow.value }}>Don't</Text>
     </Title>
     <Emoji source={require('@assets/no-good-emoji.png')} />
   </Wrapper>

@@ -1,35 +1,36 @@
 import * as React from 'react';
-import { ScrollView } from 'react-native';
 import { NavigationInjectedProps } from 'react-navigation';
 
+import { ScrollContainer } from '@app/components/ScrollContainer';
 import { Title } from '@components/Title';
-import { TodoInput } from './components/TodoInput';
+import { GradientButton } from '@components/GradientButton';
+import { TextInput } from '@components/TextInput';
 
 import styled from 'styled-components/native';
 import { white, tomato } from '@app/theme/colors';
-import { RegisterButton } from '../Register/components/RegisterButton';
 
 export class AddTodoScreen extends React.Component<NavigationInjectedProps> {
   public static navigationOptions = ({
     navigation,
   }: NavigationInjectedProps) => ({
+    // tslint:disable:jsx-no-lambda
     headerRight: (
-      <CancelButton onPress={navigation.goBack}>
-        <CancelText>CANCEL</CancelText>
+      <CancelButton onPress={() => navigation.goBack()}>
+        <CancelText>❌</CancelText>
       </CancelButton>
     ),
   });
 
   public render() {
     return (
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollContainer>
         <Wrapper>
           <Title>Create a todo</Title>
-          <TodoInput placeholder="Description" />
-          <TodoInput placeholder="Date" />
+          <TextInput placeholder="Description" />
+          <TextInput placeholder="Date" />
         </Wrapper>
-        <RegisterButton color={white.value}>I'LL DO IT LATER 🤞</RegisterButton>
-      </ScrollView>
+        <GradientButton color={white.value}>I'LL DO IT LATER 🤞</GradientButton>
+      </ScrollContainer>
     );
   }
 }

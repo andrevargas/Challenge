@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { Text } from 'react-native';
 import { NavigationInjectedProps } from 'react-navigation';
 
+import { ScrollContainer } from '@components/ScrollContainer';
 import { Title } from '@components/Title';
 import { Link } from '@components/Link';
-import { RegisterInput } from './components/RegisterInput';
-import { RegisterButton } from './components/RegisterButton';
+import { TextInput } from '@components/TextInput';
+import { GradientButton } from '@components/GradientButton';
 
 import styled from 'styled-components/native';
 import { amethyst, darkGrey, white } from '@app/theme/colors';
@@ -17,20 +18,20 @@ export class RegisterScreen extends React.Component<NavigationInjectedProps> {
 
   public render() {
     return (
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollContainer contentContainerStyle={{ flexGrow: 1 }}>
         <Wrapper>
           <Title>Create your account</Title>
           <Info>
             You're almost there! We just need your data, but relax, we promise
             we won't sell it.
           </Info>
-          <RegisterInput placeholder="Name" textContentType="name" />
-          <RegisterInput
+          <TextInput placeholder="Name" textContentType="name" />
+          <TextInput
             placeholder="E-mail"
             keyboardType="email-address"
             textContentType="emailAddress"
           />
-          <RegisterInput
+          <TextInput
             placeholder="Password"
             textContentType="password"
             secureTextEntry={true}
@@ -43,10 +44,10 @@ export class RegisterScreen extends React.Component<NavigationInjectedProps> {
             <Text>👈</Text>
           </Link>
         </Wrapper>
-        <RegisterButton color={white.value}>
+        <GradientButton color={white.value}>
           CREATE MY ACCOUNT ⚡
-        </RegisterButton>
-      </ScrollView>
+        </GradientButton>
+      </ScrollContainer>
     );
   }
 

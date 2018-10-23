@@ -1,17 +1,14 @@
 import * as React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 
 import styled from 'styled-components/native';
-import { white } from '@app/theme/colors';
+import { IStyledComponentProps } from '@app/interfaces/IStyledComponentProps';
 
-interface IProps {
-  color?: string;
-  children: React.ReactNode;
-  onPress?(): void;
-}
+type Props = TouchableOpacityProps & IStyledComponentProps;
 
-export const Link: React.SFC<IProps> = props => (
+export const Link: React.SFC<Props> = props => (
   <Touchable onPress={props.onPress}>
-    <LinkText style={{ color: props.color }}>{props.children}</LinkText>
+    <LinkText color={props.color}>{props.children}</LinkText>
   </Touchable>
 );
 
@@ -20,7 +17,7 @@ const Touchable = styled.TouchableOpacity`
   margin-bottom: 5%;
 `;
 
-const LinkText = styled.Text`
-  color: ${white.value};
+const LinkText = styled.Text<IStyledComponentProps>`
+  color: ${props => props.color};
   font-size: 20px;
 `;

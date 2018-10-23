@@ -1,12 +1,8 @@
 import styled from 'styled-components/native';
-import { Text, TextProps } from 'react-native';
+import { IStyledComponentProps } from '@app/interfaces/IStyledComponentProps';
 import { amethyst } from '@app/theme/colors';
 
-interface IProps extends TextProps {
-  color?: string;
-}
-
-export const Title = styled<IProps>(Text)`
+export const Title = styled.Text<IStyledComponentProps>`
   color: ${props => props.color};
   font-size: 32px;
   font-family: 'sans-serif-medium';

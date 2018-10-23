@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { TextInput as TextInputNative, TextInputProps } from 'react-native';
+import { TextInputProps } from 'react-native';
+
 import styled from 'styled-components/native';
-import { white } from '@app/theme/colors';
+import { IStyledComponentProps } from '@app/interfaces/IStyledComponentProps';
+import { darkGrey, amethyst, black } from '@app/theme/colors';
 
 interface IState {
   focused: boolean;
 }
 
-interface IProps extends TextInputProps {
-  color?: string;
-  borderColor?: string;
+interface IProps extends TextInputProps, IStyledComponentProps {
   borderFocusedColor?: string;
   focused?: boolean;
 }
@@ -21,8 +21,6 @@ export class TextInput extends React.Component<IProps, IState> {
     const { color, borderColor, borderFocusedColor } = this.props;
     return (
       <Input
-        selectionColor={white.alpha(0.3).value}
-        placeholderTextColor={white.value}
         {...this.props}
         onBlur={this.toggleFocus}
         onFocus={this.toggleFocus}
@@ -40,7 +38,7 @@ export class TextInput extends React.Component<IProps, IState> {
   };
 }
 
-export const Input = styled<IProps>(TextInputNative)`
+export const Input = styled.TextInput<IProps>`
   width: 100%;
   color: ${props => props.color};
   font-size: 22px;
@@ -53,7 +51,9 @@ export const Input = styled<IProps>(TextInputNative)`
 `;
 
 Input.defaultProps = {
-  borderColor: white.value,
-  borderFocusedColor: white.value,
-  color: white.value,
+  borderColor: black.light(50).value,
+  borderFocusedColor: amethyst.value,
+  color: darkGrey.value,
+  placeholderTextColor: black.light(50).alpha(0.5).value,
+  selectionColor: amethyst.value,
 };

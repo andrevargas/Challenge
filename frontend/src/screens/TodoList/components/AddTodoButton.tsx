@@ -1,16 +1,14 @@
 import * as React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
+import { TouchableOpacityProps } from 'react-native';
+
+import { GradientBackground } from '@components/layout';
 
 import styled from 'styled-components/native';
 import { white, rose, violet } from '@app/theme/colors';
-import { TouchableOpacityProps } from 'react-native';
 
 export const AddTodoButton: React.SFC<TouchableOpacityProps> = props => (
   <Touchable onPress={props.onPress}>
-    <Gradient
-      end={{ x: 2, y: 1 }}
-      start={{ x: 0, y: 1 }}
-      colors={[rose.value, violet.value]}>
+    <Gradient from={rose.value} to={violet.value}>
       <Title>➕ &nbsp;ADD NEW TODO</Title>
     </Gradient>
   </Touchable>
@@ -22,7 +20,7 @@ const Touchable = styled.TouchableOpacity`
   bottom: 20px;
 `;
 
-const Gradient = styled(LinearGradient)`
+const Gradient = styled(GradientBackground)`
   padding: 20px 30px;
   border-radius: 50px;
   elevation: 5;

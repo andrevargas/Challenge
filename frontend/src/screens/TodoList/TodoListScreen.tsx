@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { ScrollView } from 'react-native';
+import { FlatList } from 'react-native';
 import { NavigationInjectedProps } from 'react-navigation';
 
-import { ScrollContainer } from '@app/components/ScrollContainer';
-import { Title } from '@app/components/Title';
+import { Query } from 'react-apollo';
+import TodoListQuery from './query/TodoList.graphql';
+
+import { Title } from '@app/components/core/Title';
 import { TodoItem } from './components/TodoItem';
 import { AddTodoButton } from './components/AddTodoButton';
 
@@ -16,18 +18,30 @@ export class TodoListScreen extends React.Component<NavigationInjectedProps> {
   };
 
   public render() {
+    // tslint:disable:jsx-no-lambda
     return (
       <Container>
-        <ScrollContainer>
-          <Title style={{ padding: 20, paddingBottom: 0 }}>
-            Things you won't do
-          </Title>
-          <TodoItem>Hey, how is it going?</TodoItem>
-          <TodoItem>Lorem ipsum dolor sit amet lorem ipsis iteris</TodoItem>
-          <TodoItem>Hey, how is it going?</TodoItem>
-          <TodoItem>Lorem ipsum dolor sit amet lorem ipsis iteris</TodoItem>
-          <TodoItem>Hey, how is it going?</TodoItem>
-        </ScrollContainer>
+        <Title style={{ padding: 20, paddingBottom: 0 }}>
+          Things you won't do
+        </Title>
+        <Query query={TodoListQuery} variables={{ count: 10 }}>
+          {({ data, loading, fetchMore }) => {
+            if (loading) {
+              return null;
+            }
+            if (data) {
+              return (
+                <FlatList
+                  data={data.todos.edges}
+                  keyExtractor={(item: any) => item.node.id}
+                  renderItem={({ item }: any) => (
+                    <TodoItem>{item.node.description}</TodoItem>
+                  )}
+                />
+              );
+            }
+          }}
+        </Query>
         <AddTodoButton onPress={this.toAddTodo} />
       </Container>
     );

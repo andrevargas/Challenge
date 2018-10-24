@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { NavigationInjectedProps } from 'react-navigation';
 
-import { ScrollContainer } from '@app/components/ScrollContainer';
-import { Title } from '@components/Title';
-import { GradientButton } from '@components/GradientButton';
-import { TextInput } from '@components/TextInput';
+import { ScrollContainer } from '@app/components/layout/ScrollContainer';
+import { Title } from '@app/components/core/Title';
+import { GradientButton } from '@app/components/core/GradientButton';
+import { TextInput } from '@app/components/forms/TextInput';
 
 import styled from 'styled-components/native';
 import { white, tomato } from '@app/theme/colors';

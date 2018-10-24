@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TouchableOpacityProps } from 'react-native';
-import { GradientBackground } from './GradientBackground';
+import { GradientBackground } from '../layout/GradientBackground';
 
 import styled from 'styled-components/native';
 import { IStyledComponentProps } from '@app/interfaces/IStyledComponentProps';

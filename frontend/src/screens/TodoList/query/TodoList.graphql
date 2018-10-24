@@ -1,0 +1,14 @@
+query TodoList($count: Int!, $cursor: String) {
+  todos(first: $count, after: $cursor) @connection(key: "todos") {
+    edges {
+      node {
+        id
+        description
+        date
+      }
+    }
+    pageInfo {
+      hasNextPage
+    }
+  }
+}

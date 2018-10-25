@@ -6,12 +6,12 @@ import { withAuth } from '../resolvers';
 export const typeDefs = `
   type Todo {
     id: ID!
-    completed: Boolean!
+    completed: Boolean
     description: String!
-    date: DateTime!
-    createdAt: DateTime!
-    updatedAt: DateTime!
-    user: User!
+    date: DateTime
+    createdAt: DateTime
+    updatedAt: DateTime
+    user: User
   }
 
   type TodoConnection {

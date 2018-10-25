@@ -5,14 +5,15 @@ import { Mutation, MutationFn } from 'react-apollo';
 import AddTodoMutation from './mutation/AddTodo.graphql';
 import TodoListQuery from '../TodoList/query/TodoList.graphql';
 
-import { ScrollContainer } from '@app/components/layout/ScrollContainer';
-import { GradientButton } from '@app/components/core/GradientButton';
-import { Title } from '@app/components/core/Title';
-import { TextInput } from '@app/components/forms/TextInput';
+import { ScrollContainer } from '@components/layout/ScrollContainer';
+import { GradientButton } from '@components/core/GradientButton';
+import { Title } from '@components/core/Title';
+import { TextInput } from '@components/forms/TextInput';
 import { CancelButton } from './components/CancelButton';
 
 import styled from 'styled-components/native';
 import { white } from '@app/theme/colors';
+import { LoadingOverlay } from '@app/components/core';
 
 interface IState {
   description?: string;
@@ -48,19 +49,21 @@ export class AddTodoScreen extends React.Component<
     return (
       <Mutation
         mutation={AddTodoMutation}
-        update={(cache, { data: { todo } }) => {
+        update={(cache, { data: { todo: node } }) => {
           const { todos } = cache.readQuery({ query: TodoListQuery }) as any;
           cache.writeQuery({
             query: TodoListQuery,
-            data: todos.edges.concat([
-              {
-                node: todo,
+            data: {
+              todos: {
+                edges: todos.edges.concat([node]),
+                ...todos,
               },
-            ]),
+            },
           });
         }}>
-        {commitMutation => (
+        {(commitMutation, { loading }) => (
           <ScrollContainer>
+            <LoadingOverlay loading={loading} />
             <Wrapper>
               <Title>Create a todo</Title>
               <TextInput

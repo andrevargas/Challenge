@@ -25,7 +25,7 @@ export class TodoListScreen extends React.Component<NavigationInjectedProps> {
           Things you won't do
         </Title>
         <Query query={TodoListQuery} variables={{ count: 10 }}>
-          {({ data, loading, fetchMore }) => {
+          {({ data, loading }) => {
             if (loading) {
               return null;
             }

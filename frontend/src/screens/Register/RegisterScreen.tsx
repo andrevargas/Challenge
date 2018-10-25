@@ -6,7 +6,7 @@ import { Mutation, MutationFn } from 'react-apollo';
 import SignUpMutation from './mutation/SignUp.graphql';
 
 import { ScrollContainer } from '@components/layout';
-import { Link, Title, GradientButton } from '@components/core';
+import { Link, Title, GradientButton, LoadingOverlay } from '@components/core';
 import { TextInput } from '@app/components/forms';
 
 import styled from 'styled-components/native';
@@ -35,8 +35,9 @@ export class RegisterScreen extends React.Component<
   public render() {
     return (
       <Mutation mutation={SignUpMutation}>
-        {commitMutation => (
+        {(commitMutation, { loading }) => (
           <ScrollContainer>
+            <LoadingOverlay loading={loading} />
             <FormWrapper>
               <Title>Create your account</Title>
               <Info>

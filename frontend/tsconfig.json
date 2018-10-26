@@ -14,7 +14,9 @@
     "strict": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "jsx": "react-native"
+    "jsx": "react-native",
+    "experimentalDecorators": true,
+    "strictNullChecks": true
   },
   "include": [
     "src", "index.js", "index.ts"

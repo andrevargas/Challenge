@@ -3,5 +3,6 @@ mutation AddTodo($input: AddTodoInput!) {
     id
     description
     date
-  } 
+    createdAt
+  }
 }

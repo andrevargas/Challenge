@@ -5,6 +5,7 @@ import { LoginScreen } from '@screens/Login';
 import { RegisterScreen } from '@screens/Register';
 import { TodoListScreen } from '@screens/TodoList';
 import { AddTodoScreen } from '@screens/AddTodo';
+import { TodoDetailScreen } from '@screens/TodoDetail';
 
 const AppNavigator = createStackNavigator(
   {
@@ -13,6 +14,9 @@ const AppNavigator = createStackNavigator(
     },
     TodoList: {
       screen: TodoListScreen,
+    },
+    TodoDetail: {
+      screen: TodoDetailScreen,
     },
   },
   {

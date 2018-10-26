@@ -19,7 +19,7 @@ export const LoadingOverlay: React.SFC<IProps> = props => (
     onRequestClose={noop}>
     <Backdrop>
       <IndicatorWrapper>
-        <ActivityIndicator animating={true} color={props.color} size={100} />
+        <ActivityIndicator animating={true} color={props.color} size={70} />
       </IndicatorWrapper>
     </Backdrop>
   </Modal>
@@ -33,11 +33,11 @@ const Backdrop = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: ${black.alpha(0.3).value};
+  background-color: ${black.alpha(0.2).value};
 `;
 
 const IndicatorWrapper = styled.View`
-  padding: 30px;
+  padding: 50px;
   background-color: ${white.value};
   border-radius: 20px;
   align-items: center;

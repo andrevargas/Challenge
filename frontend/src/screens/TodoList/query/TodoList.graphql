@@ -1,6 +1,7 @@
 query TodoList($count: Int!, $cursor: String) {
   todos(first: $count, after: $cursor) @connection(key: "todos") {
     edges {
+      cursor
       node {
         id
         description

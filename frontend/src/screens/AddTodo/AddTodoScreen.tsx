@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { NavigationInjectedProps } from 'react-navigation';
 
+import { Buffer } from 'buffer';
 import { Mutation, MutationFn } from 'react-apollo';
 import AddTodoMutation from './mutation/AddTodo.graphql';
 import TodoListQuery from '../TodoList/query/TodoList.graphql';
+import { ITodoNode } from '@app/interfaces/ITodoNode';
 
 import { ScrollContainer } from '@components/layout/ScrollContainer';
 import { GradientButton } from '@components/core/GradientButton';
@@ -21,10 +23,7 @@ interface IState {
 }
 
 interface IAddTodoData {
-  todo: {
-    date: string;
-    description: string;
-  };
+  todo: ITodoNode;
 }
 
 export class AddTodoScreen extends React.Component<
@@ -49,14 +48,19 @@ export class AddTodoScreen extends React.Component<
     return (
       <Mutation
         mutation={AddTodoMutation}
-        update={(cache, { data: { todo: node } }) => {
+        update={(cache, { data: { todo } }) => {
           const { todos } = cache.readQuery({ query: TodoListQuery }) as any;
+          const edge = {
+            cursor: Buffer.from(todo.createdAt).toString('base64'),
+            node: todo,
+            __typename: 'TodoEdge',
+          };
           cache.writeQuery({
             query: TodoListQuery,
             data: {
               todos: {
-                edges: todos.edges.concat([node]),
                 ...todos,
+                edges: [edge, ...todos.edges],
               },
             },
           });

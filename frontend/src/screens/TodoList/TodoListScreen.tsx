@@ -5,6 +5,7 @@ import { NavigationInjectedProps } from 'react-navigation';
 import { Query } from 'react-apollo';
 import TodoListQuery from './query/TodoList.graphql';
 import { ITodoEdge } from '@app/interfaces/ITodoEdge';
+import { ITodoNode } from '@app/interfaces/ITodoNode';
 
 import { Title } from '@app/components/core/Title';
 import { TodoItem } from './components/TodoItem';
@@ -39,7 +40,9 @@ export class TodoListScreen extends React.Component<NavigationInjectedProps> {
                   keyExtractor={item => item.node.id}
                   ListFooterComponent={Spacer}
                   renderItem={({ item }) => (
-                    <TodoItem>{item.node.description}</TodoItem>
+                    <TodoItem onPress={this.toDetail(item.node)}>
+                      {item.node.description}
+                    </TodoItem>
                   )}
                   onEndReachedThreshold={0.1}
                   onEndReached={() => {
@@ -76,6 +79,10 @@ export class TodoListScreen extends React.Component<NavigationInjectedProps> {
 
   private toAddTodo = () => {
     this.props.navigation.navigate('AddTodo');
+  };
+
+  private toDetail = (item: ITodoNode) => () => {
+    this.props.navigation.navigate('TodoDetail', { item });
   };
 }
 

@@ -1,11 +1,19 @@
 import * as React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 
 import styled from 'styled-components/native';
 import { darkGrey, black } from '@app/theme/colors';
 
-export const TodoItem: React.SFC = props => (
-  <Touchable>
-    <Checkmark />
+// tslint:disable:jsx-no-lambda
+export const TodoItem: React.SFC<TouchableOpacityProps> = props => (
+  <Touchable onPress={props.onPress}>
+    <Checkmark
+      onPress={() =>
+        alert(
+          "I thought you were a real procrastinator! You're not allowed to complete this task!"
+        )
+      }
+    />
     <Text>{props.children}</Text>
   </Touchable>
 );
@@ -26,9 +34,9 @@ const Text = styled.Text`
   flex: 1;
 `;
 
-const Checkmark = styled.View`
-  width: 22px;
-  height: 22px;
+const Checkmark = styled.TouchableOpacity`
+  width: 25px;
+  height: 25px;
   border-radius: 50;
   border-color: ${black.light(50).value};
   border-width: 1px;

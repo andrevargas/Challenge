@@ -51,7 +51,7 @@ export const Input = styled.TextInput<IProps>`
 `;
 
 Input.defaultProps = {
-  borderColor: black.light(50).value,
+  borderColor: black.light(20).value,
   borderFocusedColor: amethyst.value,
   color: darkGrey.value,
   placeholderTextColor: black.light(50).alpha(0.5).value,

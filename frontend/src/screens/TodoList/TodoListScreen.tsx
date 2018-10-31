@@ -4,16 +4,16 @@ import { NavigationInjectedProps } from 'react-navigation';
 
 import { Query } from 'react-apollo';
 import TodoListQuery from './query/TodoList.graphql';
+
 import { ITodoEdge } from '@app/interfaces/ITodoEdge';
 import { ITodoNode } from '@app/interfaces/ITodoNode';
 
-import { Title } from '@app/components/core/Title';
+import { Title, LoadingOverlay } from '@components/core';
 import { TodoItem } from './components/TodoItem';
 import { AddTodoButton } from './components/AddTodoButton';
 
 import styled from 'styled-components/native';
 import { white } from '@app/theme/colors';
-import { LoadingOverlay } from '@app/components/core';
 
 export class TodoListScreen extends React.Component<NavigationInjectedProps> {
   public static navigationOptions = {
@@ -21,7 +21,6 @@ export class TodoListScreen extends React.Component<NavigationInjectedProps> {
   };
 
   public render() {
-    // tslint:disable:jsx-no-lambda
     return (
       <Container>
         <Title style={{ padding: 20, paddingBottom: 0 }}>

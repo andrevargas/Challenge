@@ -11,11 +11,11 @@ import { ScrollContainer } from '@components/layout/ScrollContainer';
 import { GradientButton } from '@components/core/GradientButton';
 import { Title } from '@components/core/Title';
 import { TextInput } from '@components/forms/TextInput';
+import { LoadingOverlay } from '@components/core';
 import { CancelButton } from './components/CancelButton';
 
 import styled from 'styled-components/native';
 import { white } from '@app/theme/colors';
-import { LoadingOverlay } from '@app/components/core';
 
 interface IState {
   description?: string;
@@ -33,7 +33,7 @@ export class AddTodoScreen extends React.Component<
   public static navigationOptions = ({
     navigation,
   }: NavigationInjectedProps) => ({
-    // tslint:disable:jsx-no-lambda
+    title: 'Add todo',
     headerRight: (
       <CancelButton onPress={() => navigation.goBack()}>❌</CancelButton>
     ),

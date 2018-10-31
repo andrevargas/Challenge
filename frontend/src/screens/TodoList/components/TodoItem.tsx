@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { TouchableOpacityProps } from 'react-native';
+import { TouchableOpacityProps, Alert } from 'react-native';
 
 import styled from 'styled-components/native';
 import { darkGrey, black } from '@app/theme/colors';
 
-// tslint:disable:jsx-no-lambda
+function showAlert() {
+  Alert.alert(
+    '🧙‍♂️ YOU SHALL NOT PASS!',
+    'I thought you were a real procrastinator! You are not allowed to complete anything!',
+    [{ text: 'This app is not for me' }, { text: 'Oh, sorry' }]
+  );
+}
+
 export const TodoItem: React.SFC<TouchableOpacityProps> = props => (
   <Touchable onPress={props.onPress}>
-    <Checkmark
-      onPress={() =>
-        alert(
-          "I thought you were a real procrastinator! You're not allowed to complete this task!"
-        )
-      }
-    />
+    <Checkmark onPress={showAlert} />
     <Text>{props.children}</Text>
   </Touchable>
 );

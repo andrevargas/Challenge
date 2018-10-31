@@ -7,7 +7,7 @@ import SignUpMutation from './mutation/SignUp.graphql';
 
 import { ScrollContainer } from '@components/layout';
 import { Link, Title, GradientButton, LoadingOverlay } from '@components/core';
-import { TextInput } from '@app/components/forms';
+import { TextInput } from '@components/forms';
 
 import styled from 'styled-components/native';
 import { amethyst, white, darkGrey } from '@app/theme/colors';

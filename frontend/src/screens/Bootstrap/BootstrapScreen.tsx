@@ -1,17 +1,10 @@
 import * as React from 'react';
-import { AsyncStorage, ActivityIndicator } from 'react-native';
+import { AsyncStorage } from 'react-native';
 import { NavigationInjectedProps } from 'react-navigation';
-
-import styled from 'styled-components/native';
-import { white, amethyst } from '@app/theme/colors';
 
 export class BootstrapScreen extends React.Component<NavigationInjectedProps> {
   public render() {
-    return (
-      <Wrapper>
-        <ActivityIndicator color={amethyst.value} size={200} animating={true} />
-      </Wrapper>
-    );
+    return null;
   }
 
   public componentDidMount() {
@@ -23,10 +16,3 @@ export class BootstrapScreen extends React.Component<NavigationInjectedProps> {
     this.props.navigation.navigate(token ? 'App' : 'Auth');
   }
 }
-
-const Wrapper = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  background-color: ${white.value};
-`;

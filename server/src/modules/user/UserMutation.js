@@ -1,4 +1,4 @@
-import { AuthenticationError, ApolloError } from 'apollo-server';
+import { AuthenticationError, ApolloError } from 'apollo-server-lambda';
 import { UserModel } from './UserModel';
 import { encryptPassword, generateToken, authenticate } from '../../auth';
 import { prepare } from '../resolvers';

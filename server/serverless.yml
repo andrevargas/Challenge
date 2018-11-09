@@ -1,0 +1,29 @@
+service: apollo-server
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs8.10
+
+plugins:
+  - serverless-offline
+  - serverless-webpack
+
+custom:
+  webpackIncludeModules: true
+
+functions:
+  graphql:
+    handler: src/server.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+  playground:
+    handler: src/server.playgroundHandler
+    events:
+      - http:
+          path: playground
+          method: get
+          cors: true

@@ -35,4 +35,5 @@ export const typeDefs = [UserType.typeDefs, TodoType.typeDefs];
 export const schema = makeExecutableSchema({
   typeDefs: [SchemaDefinition, ...typeDefs],
   resolvers,
+  logger: console,
 });

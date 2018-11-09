@@ -1,4 +1,4 @@
-import { ForbiddenError } from 'apollo-server';
+import { ForbiddenError } from 'apollo-server-lambda';
 import { GraphQLDateTime } from 'graphql-iso-date';
 import { skip, pipe } from 'graphql-resolvers';
 

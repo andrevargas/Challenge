@@ -1,1 +1,4 @@
 */node_modules
+
+server/.webpack
+server/.serverless

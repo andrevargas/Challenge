@@ -2,8 +2,6 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { UserModel } from './modules/user/UserModel';
 
-const JWT_SECRET = process.env.JWT_SECRET;
-
 export async function authenticate(plainPassword, encryptedPassword) {
   return bcrypt.compare(plainPassword, encryptedPassword);
 }
@@ -12,7 +10,7 @@ export async function getUser(authorization) {
   if (!authorization) return null;
   try {
     const token = authorization.substring(7);
-    const decodedToken = jwt.verify(token, JWT_SECRET);
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await UserModel.findById(decodedToken.id);
     user.token = token;
@@ -28,5 +26,5 @@ export async function encryptPassword(password) {
 }
 
 export function generateToken(user) {
-  return jwt.sign({ id: user._id }, JWT_SECRET);
+  return jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 }

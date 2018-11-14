@@ -8,10 +8,6 @@ services:
       - mongo
     depends_on:
       - mongo
-    environment:
-      NODE_ENV: development
-      MONGODB_URL: mongodb://mongo/database # TODO remove it from here
-      JWT_SECRET: secret # TODO remove it from here
     ports:
       - "4000:4000"
     volumes:

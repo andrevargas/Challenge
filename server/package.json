@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon src/index.js",
-    "serve": "serverless offline --useSeparateProcesses --prefix dev",
-    "deploy": "serverless deploy"
+    "serve": "serverless offline",
+    "deploy": "serverless deploy --stage prod"
   },
   "dependencies": {
     "apollo-server-lambda": "^2.2.0",

@@ -2,21 +2,29 @@ service: apollo-server
 
 provider:
   name: aws
-  stage: dev
+  stage: ${self:custom.stage}
   region: us-east-1
   runtime: nodejs8.10
   environment:
-    JWT_SECRET: ${ssm:JWT_SECRET}
-    MONGODB_URL: ${ssm:MONGODB_URL}
-    GRAPHQL_ENDPOINT: /${self:provider.stage}/graphql
+    NODE_ENV: ${self:custom.nodeEnv.${self:custom.stage}}
+    JWT_SECRET: ${ssm:JWT_SECRET, 'secret'}
+    MONGODB_URL: ${ssm:MONGODB_URL, 'mongodb://localhost/database'}
+    GRAPHQL_ENDPOINT: /${self:custom.stage}/graphql
 
 plugins:
-  - serverless-offline
   - serverless-webpack
+  - serverless-offline
 
 custom:
+  stage: ${opt:stage, 'dev'}
+  nodeEnv:
+    dev: development
+    prod: production
   webpack:
     includeModules: true
+  serverless-offline:
+    prefix: ${self:custom.stage}
+    useSeparateProcess: true
 
 functions:
   graphql:
